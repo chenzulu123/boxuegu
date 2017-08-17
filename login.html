@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博学谷登录页面</title>
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <div class="form-container">
+        <h3 class="text-center">博学谷管理系统</h3>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name='tc_name' value="前端学院">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="tc_pass" value="123">
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                <input type="checkbox">请记住我
+              </label>
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success btn-block">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="jquery-2.1.4.js"></script>
+<script src="./js/lib/jquery-2.1.4.js"></script>
+<script>
+    $('form').on('submit', function () {
+        //组织form表单的页面刷新
+        //阻止事件的默认行为
+        // e.preventDefault();//e.
+        //可以阻止submit事件的默认行为和阻止事件冒泡
+        // 
+        //将表单数据进行序列化
+        var formData = $(this).serialize();//要想获取序列化的数据，该表单数据一定要有那么属性
+        // alert(formData);
+        $.ajax({
+            url: '/api/login',//-->http://api.botu.com/login
+            type: 'post',
+            data: formData,
+            //请求成功的回调函数
+            success: function (res) {
+                if (res.code == 200) {
+                    //跳转到index页面
+                    //相对路径
+                    location.href = 'index.html';
+                    // 绝对路径
+                    // location.href = '/index.html';
+                    // location.href = '/';
+                }
+            },
+            //请求失败的回调函数
+            error: function (res) {
+                if (res.code == 401) {
+                    //未授权
+                } else if (res.code == 403) {
+                    //没有权限
+                } else if (res.code == 500) {
+                    //服务器内部错误
+                }
+            }
+        });
+        //阻止submit事件的默认行为
+        return false;
+    })
+</script>
+</html>
