@@ -41,7 +41,7 @@
         // 
         //将表单数据进行序列化
 
-        var formData = $(this).serialize();//要想获取序列化的数据，该表单数据一定要有那么属性
+        var formData = $(this).serialize();//要想获取序列化的数据，该表单数据一定要有name属性,并且设置的name属性是和后台字段相同的
         // alert(formData);
         $.ajax({
             url: '/api/login',
