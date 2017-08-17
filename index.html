@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>博学谷主页</title>
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
-<body>
 
+<body>
+    <div class="left">
+        <!-- 个人简介 -->
+        <div class="profile">
+            <!-- 个人头像 -->
+            <div class="img-container">
+                <img src="./imgs/monkey.png" alt="" class="img-circle" width="80" height="80">
+            </div>
+        </div>
+        <!-- 个人简介 -->
+        <h4 class="text-center">前端学院</h4>
+        <!-- 列表组 -->
+        <div class="list-group">
+            <a href="#" class="list-group-item active text-center">讲师管理</a>
+            <a href="#" class="list-group-item text-center">课程管理</a>
+            <a href="#" class="list-group-item text-center">课程分类</a>
+            <a href="#" class="list-group-item text-center">图表统计</a>
+        </div>
+    </div>
+    <div class="right">
+        <!-- 面板 -->
+        <div class="panel panel-default panel-top">
+            <div class="panel-body">
+                <div class="row">
+                    <!-- 教育图标的字体图标 -->
+                    <div class="col-md-1">
+                        <!-- 字体图标通过一个按钮进行包含 -->
+                        <button class="btn btn-success">
+                            <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <!--  -->
+                    <div class='col-md-1 col-md-offset-8'>
+                        <a href="javascript:void(0)">个人中心</a>
+                    </div>
+                    <div class='col-md-1'>
+                        <a href="javascript:void(0)">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="menu-content"></div>
+        </div>
+    </div>
 </body>
+<script src="./js/lib/require.js" data-main='main'></script>
+
 </html>
