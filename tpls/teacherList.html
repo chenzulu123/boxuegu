@@ -1,0 +1,59 @@
+<ol class="breadcrumb">
+    <li><a href="#" style="text-decoration: none;">讲师管理</a></li>
+    <li class="active">讲师列表</li>
+</ol>
+<div class="row">
+    <div class="col-md-1 col-md-offset-10">
+        <button class="btn btn-success">添加讲师</button>
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">用户名</th>
+            <th class="text-center">花名</th>
+            <th class="text-center">性别</th>
+            <th class="text-center">手机</th>
+            <th class="text-center">邮箱</th>
+            <th class="text-center">账户状态</th>
+            <th class="text-center">出生日期</th>
+            <th class="text-center">入职日期</th>
+            <th class="text-center">操作</th>
+        </tr>
+        <tbody>
+            {{each result}} {{if($index%2==1)}}
+            <tr class="info text-center">
+                <td>{{$value.tc_name}}</td>
+                <td>{{$value.tc_roster}}</td>
+                <td>{{$value.tc_gender==0?'男':'女'}}</td>
+                <td>{{$value.tc_cellphone}}</td>
+                <td>{{$value.tc_email}}</td>
+                <td>{{$value.tc_states==0?'启用':'注销'}}</td>
+                <td>{{$value.tc_birthday}}</td>
+                <td>{{$value.tc_join_date}}</td>
+                <td>
+                    <button class="btn btn-success">查看</button>
+                    <button class="btn btn-primary">编辑</button>
+                    <button class="btn btn-info">启用</button>
+                </td>
+            </tr>
+            {{else}}
+            <tr class="text-center">
+                <td>{{$value.tc_name}}</td>
+                <td>{{$value.tc_roster}}</td>
+                <td>{{$value.tc_gender==0?'男':'女'}}</td>
+                <td>{{$value.tc_cellphone}}</td>
+                <td>{{$value.tc_email}}</td>
+                <td>{{$value.tc_states==0?'启用':'注销'}}</td>
+                <td>{{$value.tc_birthday}}</td>
+                <td>{{$value.tc_join_date}}</td>
+                <td>
+                    <button class="btn btn-success">查看</button>
+                    <button class="btn btn-primary">编辑</button>
+                    <button class="btn btn-info">启用</button>
+                </td>
+            </tr>
+            {{/if}} {{/each}}
+        </tbody>
+    </thead>
+</table>

@@ -2,7 +2,7 @@
   width: 200px;
   height: 100%;
   background-color: #2aabd2;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
 }
@@ -16,12 +16,22 @@
   top: 0;
   left: 200px;
   right: 0;
-  background-color: lightpink;
-  min-height: 800px;
+  height: 100%;
+}
+.right .panel-top {
+  width: 100%;
 }
 .right .panel-top a {
   line-height: 34px;
   text-decoration: none;
   cursor: pointer;
-  color: gray;
+}
+.right .panel-content .breadcrumb {
+  width: 100%;
+}
+.right .panel-content .row {
+  width: 100%;
+}
+.right .panel-content .row button {
+  margin-bottom: 20px;
 }
