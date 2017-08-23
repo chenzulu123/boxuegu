@@ -17,7 +17,6 @@ define(["jquery", 'text!tpls/categoryEdit.html', 'template'], function ($, categ
             success: function (res) {
                 //容错处理
                 if (res.code != 200) throw new Error(res.msg);
-                
                 var categoryEdit = template.render(categoryEditTpl, res.result);
                 var $categoryEdit = $(categoryEdit).on('submit', 'form', function () {
                     var formData = $(this).serialize();

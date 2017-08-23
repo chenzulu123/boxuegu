@@ -17,7 +17,7 @@ require.config({
     },
 });
 //引入模块
-require(["jquery", 'teacher/list', 'category/list', 'user/edit','course/list','category/lessonAdd', "bootstrap"], function ($, teacherList, categoryList, userEdit,courseList,lessonAdd) {
+require(["jquery", 'teacher/list', 'category/list', 'user/edit','course/list','course/lessonAdd', "bootstrap"], function ($, teacherList, categoryList, userEdit,courseList,lessonAdd) {
     // 验证用户是否登陆过，如果用户没有登录过的话，需要跳转到登录页面
     var userInfoStr = sessionStorage.getItem('userInfo');
     var userInfo = JSON.parse(userInfoStr);//将JSON字符串转换成JSON对象
