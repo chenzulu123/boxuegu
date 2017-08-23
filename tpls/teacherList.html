@@ -5,12 +5,12 @@
 </ol>
 <div class="row">
     <div class="col-md-1 col-md-offset-10">
-        <button class="btn btn-success">添加讲师</button>
+        <button class="btn btn-success btn-add">添加讲师</button>
     </div>
 </div>
 <!-- 通过为table添加不同的类名,提供不同的样式风格 -->
 <!-- 
-1、table-hover为每行表格添加hover事件，提升用户体验
+1、table-hover为每行表格 添加hover事件，提升用户体验
 2、table-bordered为表格添加边框
  -->
 <table class="table table-bordered table-hover">
@@ -26,7 +26,6 @@
             <th class="text-center">入职日期</th>
             <th class="text-center">操作</th>
         </tr>
-
     </thead>
     <tbody>
         {{each result}} {{if($index%2==1)}}
@@ -36,13 +35,13 @@
             <td>{{$value.tc_gender==0?'男':'女'}}</td>
             <td>{{$value.tc_cellphone}}</td>
             <td>{{$value.tc_email}}</td>
-            <td>{{$value.tc_states==0?'启用':'注销'}}</td>
+            <td class="tc_status">{{$value.tc_status==0?'注销':'启用'}}</td>
             <td>{{$value.tc_birthday}}</td>
             <td>{{$value.tc_join_date}}</td>
-            <td>
-                <button class="btn btn-success">查看</button>
-                <button class="btn btn-primary">编辑</button>
-                <button class="btn btn-info">启用</button>
+            <td tc_id="{{$value.tc_id}}" tc_status='{{tc_status}}'>
+                <button class="btn btn-success btn-show">查看</button>
+                <button class="btn btn-primary btn-edit">编辑</button>
+                <button class="btn btn-info btn-use">{{$value.tc_status==0?'启用':'注销'}}</button>
             </td>
         </tr>
         {{else}}
@@ -52,13 +51,13 @@
             <td>{{$value.tc_gender==0?'男':'女'}}</td>
             <td>{{$value.tc_cellphone}}</td>
             <td>{{$value.tc_email}}</td>
-            <td>{{$value.tc_states==0?'启用':'注销'}}</td>
+            <td class="tc_status">{{$value.tc_status==0?'注销':'启用'}}</td>
             <td>{{$value.tc_birthday}}</td>
             <td>{{$value.tc_join_date}}</td>
-            <td>
-                <button class="btn btn-success">查看</button>
-                <button class="btn btn-primary">编辑</button>
-                <button class="btn btn-info">启用</button>
+            <td tc_id="{{$value.tc_id}}" tc_status='{{$value.tc_status}}'>
+                <button class="btn btn-success btn-show">查看</button>
+                <button class="btn btn-primary btn-edit">编辑</button>
+                <button class="btn btn-info btn-use">{{$value.tc_status==0?'启用':'注销'}}</button>
             </td>
         </tr>
         {{/if}} {{/each}}

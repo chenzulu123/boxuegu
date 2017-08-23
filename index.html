@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>博学谷主页</title>
@@ -7,21 +8,24 @@
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
+
 <body>
     <div class="left">
         <!-- 个人简介 -->
         <div class="profile">
             <!-- 个人头像 -->
             <div class="img-container">
-                <img src="./imgs/monkey.png" alt="" class="img-circle" width="80" height="80">
+                <!-- 个人头像是通过login页面使用sessionStorage或者是cookie进行保存-->
+                <img src="" alt="" class="img-circle" width="80" height="80">
             </div>
         </div>
-        <!-- 个人简介 -->
-        <h4 class="text-center">前端学院</h4>
+        <!--用户昵称-->
+        <h4 class="text-center"></h4>
         <!-- 菜单栏 -->
         <div class="list-group">
             <a href="javascript:void(0);" class="list-group-item active text-center teacher-manager">讲师管理</a>
             <a href="javascript:void(0);" class="list-group-item text-center course-manager">课程管理</a>
+            <a href="javascript:void(0);" class="list-group-item text-center course-add">添加课程</a>            
             <a href="javascript:void(0);" class="list-group-item text-center course-category">课程分类</a>
             <a href="javascript:void(0);" class="list-group-item text-center chart">图表统计</a>
         </div>
@@ -38,25 +42,45 @@
                             <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
                         </button>
                     </div>
-                    <!--  -->
                     <div class='col-md-1 col-md-offset-8'>
-                        <a href="javascript:void(0)">个人中心</a>
+                        <a href="javascript:void(0)" class="person-center">个人中心</a>
                     </div>
                     <div class='col-md-1'>
-                        <a href="javascript:void(0)">退出</a>
+                        <a href="javascript:void(0)" class="logOut">退出</a>
                     </div>
                 </div>
-                
             </div>
         </div>
         <!-- 显示教师列表的相关容器 -->
         <div class="panel panel-default panel-content">
             <div class="panel-body">
-
             </div>
         </div>
     </div>
 </body>
 <script src="./js/lib/require.js" data-main='main'></script>
+
+<!-- 禁止用户查看源代码的操作-->
+<!-- <script>
+    window.onload = function () {
+        document.onkeydown = function () {
+            var e = window.event || arguments[0];
+            if (e.keyCode == 123) {
+                alert("小样你想干嘛？");
+                return false;
+            } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+                alert("还是不给你看。。");
+                return false;
+            } else if ((e.ctrlKey) && (e.keyCode == 85)) {
+                //追加  
+                return false;
+            }
+        };
+        document.oncontextmenu = function () {
+            alert("小样不给你看");
+            return false;
+        }
+    }
+</script> -->
 
 </html>

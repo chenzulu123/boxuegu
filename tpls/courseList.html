@@ -1,0 +1,31 @@
+<!--教师列表模板页面-->
+<ol class="breadcrumb">
+    <li><a href="#" style="text-decoration: none;">课程管理</a></li>
+    <li class="active">课程列表</li>
+</ol>
+<ul class="list-group">
+    {{each result v}}
+    <li class="list-group-item" cs_id="{{v.cs_id}}">
+        <div class="media">
+            <div class="media-left">
+                <a href="">
+                    <img src="{{v.cs_cover}}" alt="课程图片" width="240" height="110">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4>{{v.cs_name}}
+                    <button class="btn btn-success">编辑课时</button>
+                    <button class="btn btn-info">编辑基本信息</button>
+                </h4>
+                <div>----讲师：{{v.tc_name}}</div>
+                <div>----分类：{{v.cg_name}}</div>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</ul>
+<!-- 通过为table添加不同的类名,提供不同的样式风格 -->
+<!-- 
+1、table-hover为每行表格 添加hover事件，提升用户体验
+2、table-bordered为表格添加边框
+ -->

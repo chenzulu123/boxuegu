@@ -1,0 +1,53 @@
+<div class="modal fade" id="modalShowTeacher" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">讲师信息</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-center">用户名</td>
+                            <td class="text-center">{{tc_name}}</td>
+                            <td class="text-center">职位</td>
+                            <td class="text-center">讲师</td>
+                            <td rowspan="4" class="text-center">
+                                <img src="{{tc_avatar}}" alt="" width="80" height="80">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">花名</td>
+                            <td class="text-center">{{tc_roster}}</td>
+                            <td class="text-center">入职日期</td>
+                            <td class="text-center">{{tc_join_date}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">性别</td>
+                            <!-- 通过0和1判断用户是男还是女 -->
+                            <td class="text-center">{{tc_gender==0?'男':'女'}}</td>
+                            <td class="text-center">出生日期</td>
+                            <td class="text-center">{{tc_birthday}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">手机号码</td>
+                            <td class="text-center">{{tc_cellphone}}</td>
+                            <td class="text-center">邮箱</td>
+                            <td class="text-center">{{tc_email}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">{{tc_introduce}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <!-- 给关闭按钮添加了样式 -->
+                <div class="col-md-2 col-md-offset-5">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

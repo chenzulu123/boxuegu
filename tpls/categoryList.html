@@ -1,0 +1,39 @@
+<!--教师列表模板页面-->
+<ol class="breadcrumb">
+    <li><a href="#" style="text-decoration: none;">课程管理</a></li>
+    <li class="active">课程分类</li>
+</ol>
+<div class="row">
+    <div class="col-md-1 col-md-offset-10">
+        <button class="btn btn-success btn-add">添加分类</button>
+    </div>
+</div>
+<!-- 通过为table添加不同的类名,提供不同的样式风格 -->
+<!-- 
+1、table-hover为每行表格 添加hover事件，提升用户体验
+2、table-bordered为表格添加边框
+ -->
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="tr-height">
+            <th class="text-center">分类名称</th>
+            <th class="text-center">课程数量</th>
+            <th class="text-center">是否显示</th>
+            <th class="text-center">排序</th>
+            <th class="text-center">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{each result v}}
+        <tr class="{{v.cg_pid==0?'info':''}}" cg_id="{{v.cg_id}}">
+            <td class="text-center">{{v.cg_pid==0?'':'|---'}}{{v.cg_name}}</td>
+            <td class="text-center">{{v.total}}</td>
+            <td class="text-center">{{v.cg_is_hide==0?'显示':'隐藏'}}</td>
+            <td class="text-center">{{v.cg_order}}</td>
+            <td class="text-center">
+                <button class="btn btn-info btn-edit">编辑</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

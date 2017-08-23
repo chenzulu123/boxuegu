@@ -5,8 +5,7 @@
     background-color: #2aabd2;
     position: fixed;
     top: 0;
-    bottom: 0;
-    // 个人信息
+    bottom: 0; // 个人信息
     .profile {
         // 个人头像
         .img-container {
@@ -16,43 +15,44 @@
         }
     }
 }
+
 // 右边编辑面板
 .right {
     position: absolute;
     top: 0;
     left: 200px;
     right: 0;
-    height: 100%;
-    // 顶部面板
+    height: 100%; // 顶部面板
     .panel-top {
         //将顶部面板设置为固定属性，并且设置z-index属性,当页面进行滚动的时候不会被遮挡
-        position: fixed;
-        z-index: 10;
-        width:100%;
+        // position: fixed;
+        // z-index: 10;
+        // width: 100%;
+        margin: 0 10px 10px 10px;
         a {
             line-height: 34px;
             text-decoration: none;
             cursor: pointer;
         }
-    }
-    //顶部面板使用了固定定位，需要设置margin-top撑开距离
-    .panel-content{
+    } //顶部面板使用了固定定位，需要设置margin-top撑开距离
+    .panel-content {
         margin: 0 10px;
-        margin-top: 80px;
-        .breadcrumb{
+        // margin-top: 80px;
+        .breadcrumb {
             width: 100%;
         }
-        .row{
+        .row {
             width: 100%;
-            button{
+            button {
                 margin-bottom: 20px;
             }
         }
-        .panel-body{
-            .table{
+        .panel-body {
+            .table {
+                border-radius: 20px;
                 //使用bootstrap的时候，如果要修改bootstr自带的默认样式的时候需要注意修改样式的权重问题，提高权重就能修改样式了
-                .tr-height{
-                    td{
+                .tr-height {
+                    td {
                         line-height: 30px;
                         height: 30px;
                     }

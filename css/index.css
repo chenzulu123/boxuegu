@@ -19,9 +19,7 @@
   height: 100%;
 }
 .right .panel-top {
-  position: fixed;
-  z-index: 10;
-  width: 100%;
+  margin: 0 10px 10px 10px;
 }
 .right .panel-top a {
   line-height: 34px;
@@ -30,7 +28,6 @@
 }
 .right .panel-content {
   margin: 0 10px;
-  margin-top: 80px;
 }
 .right .panel-content .breadcrumb {
   width: 100%;
@@ -40,6 +37,9 @@
 }
 .right .panel-content .row button {
   margin-bottom: 20px;
+}
+.right .panel-content .panel-body .table {
+  border-radius: 20px;
 }
 .right .panel-content .panel-body .table .tr-height td {
   line-height: 30px;
