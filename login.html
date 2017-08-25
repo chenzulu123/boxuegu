@@ -11,29 +11,33 @@
 <body>
     <div class="form-container">
         <h3 class="text-center">博学谷管理系统</h3>
-        <form class="form-horizontal" role="form">
-            <!-- 默认的用户名和密码是前端学院和123456 -->
-            <div class="form-group">
-                <label class="col-sm-2 control-label">用户名</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name='tc_name'>
+        <form class="form-horizontal" role="form" id="login">
+            <fieldset>
+                <!-- 默认的用户名和密码是前端学院和123456 -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='tc_name'>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" name="tc_pass">
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="tc_pass">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success btn-block">登录</button>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success btn-block">登录</button>
+                    </div>
                 </div>
-            </div>
+            </fieldset>
         </form>
     </div>
 </body>
 <script src="./js/lib/jquery-2.1.4.js"></script>
+<script src="./js/lib/jquery.validate.min.js"></script>
+<script src="./js/lib/messages_zh.js"></script>
 <script>
     $('form').on('submit', function () {
         //组织form表单的页面刷新
@@ -88,28 +92,36 @@
     })
 
 </script>
-
-<!-- <script>
-    // 禁止用户查看源码的功能
-    window.onload = function () {
-        document.onkeydown = function () {
-            var e = window.event || arguments[0];
-            if (e.keyCode == 123) {
-                alert("小样你想干嘛？");
-                return false;
-            } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
-                alert("还是不给你看。。");
-                return false;
-            } else if ((e.ctrlKey) && (e.keyCode == 85)) {
-                //追加  
-                return false;
+<script>
+    $().ready(function () {
+        // 在键盘按下并释放及提交后验证提交表单
+        $("#login").validate({
+            rules: {
+                tc_name: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 10
+                },
+                tc_pass: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 16
+                },
+                messages: {
+                    tc_name: {
+                        required: "请输入用户名",
+                        minlength: "用户名不能长度小于5个字符",
+                        maxlength: '用户名长度不能大于10个字符'
+                    },
+                    tc_pass: {
+                        required: "请输入密码",
+                        minlength: "密码长度不能小于5个字符",
+                        maxlength: '密码长度不能大于16个字符'
+                    }
+                }
             }
-        };
-        document.oncontextmenu = function () {
-            alert("小样不给你看");
-            return false;
-        }
-    }
-</script> -->
+        });
+    });
+</script>
 
 </html>

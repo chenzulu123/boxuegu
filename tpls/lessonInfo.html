@@ -1,0 +1,105 @@
+<ol class="breadcrumb">
+    <li><a href="#" style="text-decoration: none;">课程管理</a></li>
+    <li class="active">课时基本信息</li>
+</ol>
+<!-- 通过为table添加不同的类名,提供不同的样式风格 -->
+<!-- 
+1、table-hover为每行表格 添加hover事件，提升用户体验
+2、table-bordered为表格添加边框
+ -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        课程概要
+    </div>
+    <div class="panel-body">
+        <div class="media">
+            <div class="media-left">
+                {{if(cs_cover=='http://static.botue.com/images/cover/?')}}
+                <img src="../imgs/course.png" alt="" width="240" height="120"> {{else}}
+                <img src="{{cs_cover}}" alt="" width="240" height="120"> {{/if}}
+            </div>
+            <div class="media-right">
+                <h4>
+                    <div>讲师名称:{{tc_name}}</div>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        基本信息
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">标题</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="cs_name" value="{{cs_name}}">
+                    <input type="hidden" class="form-control" name="cs_id" value="{{cs_id}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">课程描述</label>
+                <div class="col-sm-10">
+                    <textarea name="cs_brief" cols="100" rows="5">{{cs_brief}}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">讲师</label>
+                <div class="col-sm-4">
+                    <select class="form-control " name="cs_tc_id">
+                        {{each teacher t}}
+                        {{if(cs_tc_id==t.tc_id)}}
+                        <option value="{{t.tc_id}}" selected="selected">{{t.tc_name}}</option>
+                        {{else}}
+                        <option value="{{t.tc_id}}">{{t.tc_name}}</option>
+                        {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">分类</label>
+                <div class="col-sm-4">
+                    <select class="form-control ">
+                        
+                        {{each category.top c}}
+                        {{if(cs_cg_pid==c.cg_id)}}
+                        <option value="0">顶级分类</option>
+                        <option value="{{c.cg_id}}" selected="selected">{{c.cg_name}}</option>
+                        {{else}}
+                        <option value="{{c.cg_id}}">{{c.cg_name}}</option>
+                        {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <select class="form-control " name="cs_cg_id">
+                        {{each category.childs ch}}
+                        {{if(cs_cg_id==ch.cg_id)}}
+                        <option value="{{ch.cg_id}}" selected="selected">{{ch.cg_name}}</option>
+                        {{else}}
+                        <option value="{{ch.cg_id}}">{{ch.cg_name}}</option>
+                        {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">标签</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="cs_tags" value="{{cs_tags}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-2">
+                    <button type="submit" class="btn btn-success">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

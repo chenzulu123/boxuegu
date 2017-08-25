@@ -7,17 +7,44 @@ require.config({
         //配置模板文件夹路径
         tpls: '../tpls',
         //配置template文件路径
-        template: 'lib/template-web'
+        template: 'lib/template-web',
+        datetime: '../assets/datetimepicker/js/bootstrap-datetimepicker',
+        datetimeLang: "../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
+        upload: '../assets/uploadify/jquery.uploadify',
+        ueConf: '../assets/ueditor/ueditor.config',
+        ueAll: '../assets/ueditor/ueditor.all',
+        ZeroClipboard: '../assets/ueditor/third-party/zeroclipboard/ZeroClipboard',
+        echarts: './lib/echarts.min',
+        validate: './lib/jquery.validate.min',
+        validateZH:'./lib/messages_zh'
     },
     //这里的设置是为了让bootstrap等待jQuery加载完成之后才使用jQuery模块
     shim: {
         bootstrap: {
             deps: ['jquery']
+        },
+        //日期插件的依赖使用
+        datetimeLang: {
+            deps: ['datetime']
+        },
+        //上传图片插件依赖
+        upload: {
+            deps: ['jquery']
+        },
+        ueAll: {
+            deps: ['ueConf']
+        },
+        validate: {
+            deps: ['jquery']
+        },
+        validateZH:{
+            deps:['validate']
         }
     },
 });
 //引入模块
-require(["jquery", 'teacher/list', 'category/list', 'user/edit','course/list','course/lessonAdd', "bootstrap"], function ($, teacherList, categoryList, userEdit,courseList,lessonAdd) {
+require(["jquery", 'teacher/list', 'category/list', 'user/edit', 'course/list', 'course/lessonAdd', 'course/chart', 'validate', "bootstrap","ZeroClipboard"], function ($, teacherList, categoryList, userEdit, courseList, lessonAdd, chartIndex) {
+
     // 验证用户是否登陆过，如果用户没有登录过的话，需要跳转到登录页面
     var userInfoStr = sessionStorage.getItem('userInfo');
     var userInfo = JSON.parse(userInfoStr);//将JSON字符串转换成JSON对象
@@ -35,24 +62,24 @@ require(["jquery", 'teacher/list', 'category/list', 'user/edit','course/list','c
         // 教师列表
         if ($(this).hasClass("teacher-manager")) {
             teacherList();
-        //课程列表
+            //课程列表
         } else if ($(this).hasClass("course-manager")) {
             // $('.panel-content .panel-body').html('课程管理');
             courseList();
-        //分列列表 
-        } else if ($(this).hasClass("course-add")){
+            //分列列表 
+        } else if ($(this).hasClass("course-add")) {
             // alert('添加课程模块');
             lessonAdd();
-        }else if ($(this).hasClass("course-category")) {
+        } else if ($(this).hasClass("course-category")) {
             categoryList();
-        //图标
+            //图标
         } else if ($(this).hasClass("chart")) {
-            $('.panel-content .panel-body').html('图表统计');
+            // $('.panel-content .panel-body').html('图表统计');
+            chartIndex();
         }
         //---为菜单切换的时候，添加样式》
         $(this).addClass('active').siblings().removeClass('active');
     });
-
     //个人中心(查看当前登录用户的信息)
     $('.right .panel-top .person-center').on('click', function () {
         userEdit();
@@ -77,4 +104,6 @@ require(["jquery", 'teacher/list', 'category/list', 'user/edit','course/list','c
             }
         });
     })
+
+   
 });
