@@ -1,6 +1,7 @@
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {
-		define( ["jquery", "../jquery.validate"], factory );
+		// ../jquery.validate在使用中文插件的时候需要注意把这里的依赖去掉
+		define( ["jquery"], factory );
 	} else if (typeof module === "object" && module.exports) {
 		module.exports = factory( require( "jquery" ) );
 	} else {

@@ -1,4 +1,4 @@
-define(["jquery",'text!tpls/teacherAdd.html','template','common/date'], function($,teacherAdd,template,dateTool) {
+define(["jquery",'text!tpls/teacherAdd.html','template','common/date','common/dataValidate'], function($,teacherAdd,template,dateTool,dataValidate) {
     return function(){
     $("#modalAddTeacher").remove();
      var $teacherAdd = $(teacherAdd).on('submit','form',function(){
@@ -22,48 +22,7 @@ define(["jquery",'text!tpls/teacherAdd.html','template','common/date'], function
         //日期控件的使用
         dateTool('#tc_join_date');
         //表单验证
-        $("#dataValidate").validate({
-            rules: {
-                tc_name: {
-                    required: true,
-                    minlength: 2
-                },
-                tc_pass: {
-                    required: true,
-                    minlength: 5
-                },
-                tc_join_date: {
-                    required: true,
-                    date:true,
-                },
-                tc_gender: {
-                    required: true,
-                },
-                tc_type: {
-                    required: true,
-                },
-            },
-            messages: {
-                tc_name: {
-                    required: "请输入用户名",
-                    minlength: "用户名的长度不能小于2个字符"
-                },
-                tc_pass: {
-                    required: "请输入密码",
-                    minlength: "密码长度不能小于5个字符"
-                },
-                tc_join_date: {
-                    required: "请输入入职日期",
-                },
-                tc_gender: {
-                    required: "请输入性别",
-                },
-                tc_type: {
-                    required: "请输入类型",
-                },
-                date: "请输入一个正确的日期",
-            }
-        });
+        dataValidate('#teacherAddValidate');
     });
     }
 });

@@ -93,13 +93,13 @@
 
 </script>
 <script>
+    //数据校验
     $().ready(function () {
-        // 在键盘按下并释放及提交后验证提交表单
         $("#login").validate({
             rules: {
                 tc_name: {
                     required: true,
-                    minlength: 5,
+                    minlength: 2,
                     maxlength: 10
                 },
                 tc_pass: {
@@ -110,7 +110,7 @@
                 messages: {
                     tc_name: {
                         required: "请输入用户名",
-                        minlength: "用户名不能长度小于5个字符",
+                        minlength: "用户名不能长度小于2个字符",
                         maxlength: '用户名长度不能大于10个字符'
                     },
                     tc_pass: {

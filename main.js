@@ -15,8 +15,8 @@ require.config({
         ueAll: '../assets/ueditor/ueditor.all',
         ZeroClipboard: '../assets/ueditor/third-party/zeroclipboard/ZeroClipboard',
         echarts: './lib/echarts.min',
-        validate: './lib/jquery.validate.min',
-        validateZH: './lib/messages_zh'
+        validate: './lib/validate',
+        validateLang: './lib/messages_zh'
     },
     //这里的设置是为了让bootstrap等待jQuery加载完成之后才使用jQuery模块
     shim: {
@@ -40,13 +40,13 @@ require.config({
         validate: {
             deps: ['jquery']
         },
-        validateZH: {
-            deps: ['validate']
-        }
+        validateLang:{
+            deps:['validate']
+        }     
     },
 });
 //引入模块
-require(["jquery", 'teacher/list', 'category/list', 'user/edit', 'course/list', 'course/lessonAdd', 'course/chart', 'validate', "bootstrap", "ZeroClipboard"], function ($, teacherList, categoryList, userEdit, courseList, lessonAdd, chartIndex) {
+require(["jquery", 'teacher/list', 'category/list', 'user/edit', 'course/list', 'course/lessonAdd', 'course/chart', "bootstrap", "ZeroClipboard"], function ($, teacherList, categoryList, userEdit, courseList, lessonAdd, chartIndex) {
 
     // 验证用户是否登陆过，如果用户没有登录过的话，需要跳转到登录页面
     var userInfoStr = sessionStorage.getItem('userInfo');
