@@ -15,6 +15,7 @@ define(["jquery"], function () {
                 type: type,
                 data: data,
                 success: function (res) {
+                    //ajax请求容错处理
                     if (res.code != 200) throw new Error(res.msg);
                     callback(res);
                 }
