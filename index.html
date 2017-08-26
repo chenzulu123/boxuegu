@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./assets/uploadify/uploadify.css">
+    <link rel="stylesheet" href="./assets/datetimepicker/css/bootstrap-datetimepicker.min.css">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
         <div class="list-group">
             <a href="javascript:void(0);" class="list-group-item active text-center teacher-manager">讲师管理</a>
             <a href="javascript:void(0);" class="list-group-item text-center course-manager">课程管理</a>
-            <a href="javascript:void(0);" class="list-group-item text-center course-add">添加课程</a>            
+            <a href="javascript:void(0);" class="list-group-item text-center course-add">添加课程</a>
             <a href="javascript:void(0);" class="list-group-item text-center course-category">课程分类</a>
             <a href="javascript:void(0);" class="list-group-item text-center chart">图表统计</a>
         </div>
@@ -60,28 +61,4 @@
     </div>
 </body>
 <script src="./js/lib/require.js" data-main='main'></script>
-
-<!-- 禁止用户查看源代码的操作-->
-<!-- <script>
-    window.onload = function () {
-        document.onkeydown = function () {
-            var e = window.event || arguments[0];
-            if (e.keyCode == 123) {
-                alert("小样你想干嘛？");
-                return false;
-            } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
-                alert("还是不给你看。。");
-                return false;
-            } else if ((e.ctrlKey) && (e.keyCode == 85)) {
-                //追加  
-                return false;
-            }
-        };
-        document.oncontextmenu = function () {
-            alert("小样不给你看");
-            return false;
-        }
-    }
-</script> -->
-
 </html>

@@ -1,7 +1,7 @@
 /**
  * 编辑用户信息
  */
-define(['jquery', 'text!tpls/userEdit.html', 'template', 'ueAll'], function ($, userEditTpl, template) {
+define(['jquery', 'text!tpls/userEdit.html', 'template', 'common/date', 'ueAll'], function ($, userEditTpl, template, dateTool) {
     return function () {
         $.ajax({
             url: '/api/teacher/profile',
@@ -32,6 +32,9 @@ define(['jquery', 'text!tpls/userEdit.html', 'template', 'ueAll'], function ($, 
                     //阻止submit的默认行为
                     return false;
                 }).appendTo('body').modal();
+                //时间插件的使用,这里使用的是id名,大家在使用的时候一定要注意避免id重名的问题
+                dateTool('#join_date');
+                dateTool('#tc_birthday');
                 //初始化富文本编辑器
                 // 使用之前删除原来有的富文本编辑器，否则再次打开富文本编辑器的时候会报错
                 UE.delEditor('ueContainer');

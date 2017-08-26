@@ -1,8 +1,5 @@
-define(["jquery",'text!tpls/teacherAdd.html','template'], function($,teacherAdd,template) {
-    
+define(["jquery",'text!tpls/teacherAdd.html','template','common/date'], function($,teacherAdd,template,dateTool) {
     return function(){
-    // var $teacherAdd = $(teacherAdd);
-    // $teacherAdd.appendTo('body').modal();
     $("#modalAddTeacher").remove();
      var $teacherAdd = $(teacherAdd).on('submit','form',function(){
          var formData = $(this).serialize();
@@ -22,12 +19,14 @@ define(["jquery",'text!tpls/teacherAdd.html','template'], function($,teacherAdd,
         return false;
      }).appendTo('body').modal();
      $().ready(function () {
-        // 在键盘按下并释放及提交后验证提交表单
+        //日期控件的使用
+        dateTool('#tc_join_date');
+        //表单验证
         $("#dataValidate").validate({
             rules: {
                 tc_name: {
                     required: true,
-                    minlength: 5
+                    minlength: 2
                 },
                 tc_pass: {
                     required: true,
@@ -66,7 +65,5 @@ define(["jquery",'text!tpls/teacherAdd.html','template'], function($,teacherAdd,
             }
         });
     });
-
-
     }
 });

@@ -1,7 +1,7 @@
 /**
  * 用户编辑模块，通过用户id修改(先通过tc_id获取用户信息)用户的信息
  */
-define(["jquery", 'text!/tpls/teacherEdit.html', 'template'], function ($, teacherEditTpl, template) {
+define(["jquery", 'text!/tpls/teacherEdit.html', 'template', 'common/date'], function ($, teacherEditTpl, template, dateTool) {
 
   return function (id) {
     $.ajax({
@@ -35,7 +35,9 @@ define(["jquery", 'text!/tpls/teacherEdit.html', 'template'], function ($, teach
           //阻止submit事件的默认行为
           return false;
           //把模态框添加到页面中去
-        }).appendTo('body').modal()
+        }).appendTo('body').modal();
+        //日期空间的使用
+        dateTool('#tc_join_date');
       }
     });
   }
