@@ -5,36 +5,22 @@
  * 3、用户点击提交按钮时，获取表单数据
  * 4、提交列表信息
  */
-define(["jquery", 'text!tpls/categoryEdit.html', 'template'], function ($, categoryEditTpl, template) {
+define(["jquery", 'text!tpls/categoryEdit.html', 'template', 'common/api'], function ($, categoryEditTpl, template, api) {
     return function (cg_id) {
         $('#modalEditCategory').remove();
-        $.ajax({
-            url: '/api/category/edit',
-            type: 'get',
-            data: {
-                cg_id: cg_id
-            },
-            success: function (res) {
-                //容错处理
-                if (res.code != 200) throw new Error(res.msg);
-                var categoryEdit = template.render(categoryEditTpl, res.result);
-                var $categoryEdit = $(categoryEdit).on('submit', 'form', function () {
-                    var formData = $(this).serialize();
-                    $.ajax({
-                        url: '/api/category/modify',
-                        type: 'post',
-                        data: formData,
-                        success: function (res) {
-                            //容错处理
-                            if (res.code != 200) throw new Error(res.msg);
-                            $categoryEdit.modal('hide');
-                            //模拟用户点击刷新列表(页面不刷新)
-                            $('.left .list-group .course-category').trigger('click');
-                        }
-                    });
-                    return false;
-                }).appendTo('body').modal();
-            }
+        //获取需要修改的数据
+        api.get('category/edit', { cg_id: cg_id }, function (res) {
+            var categoryEdit = template.render(categoryEditTpl, res.result);
+            var $categoryEdit = $(categoryEdit).on('submit', 'form', function () {
+                var formData = $(this).serialize();
+                //提交修改的数据
+                api.post('category/modify', formData, function (res) {
+                    $categoryEdit.modal('hide');
+                    //模拟用户点击刷新列表(页面不刷新)
+                    $('.left .list-group .course-category').trigger('click');
+                });
+                return false;
+            }).appendTo('body').modal();
         });
     }
 });

@@ -10,6 +10,7 @@ define(['jquery', 'text!tpls/categoryList.html', 'template', 'category/add', 'ca
                 //容错处理
                 if (res.code != 200) throw new Error(res.msg);
                 //把顶级分类的数据预加载到result数据中去
+
                 var html = template.render(categoryList, res);
                 var $categoryList = $(html).
                 //列表编辑
@@ -22,6 +23,7 @@ define(['jquery', 'text!tpls/categoryList.html', 'template', 'category/add', 'ca
                     categoryAdd();
                 });
                 $('.panel-content .panel-body').html($categoryList);
+                
             }
         });
     }
