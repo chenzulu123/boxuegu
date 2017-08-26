@@ -2,7 +2,6 @@
  * 进一步封装的aja方法
  */
 define(["jquery"], function () {
-
     var obj = {
         /**
          * @param url 请求地址
@@ -22,6 +21,7 @@ define(["jquery"], function () {
             });
         }
     };
+    //添加get、post方法
     var fns = "get,post".split(',');
     fns.forEach(function (fnName) {
         obj[fnName] = function (url, data, callback) {
